@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+	<context:component-scan base-package="com.michalprzysucha.samples.service"/>
+
+	<!--bean name="/ShopService" class="com.googlecode.jsonrpc4j.spring.JsonServiceExporter">
+		<property name="service" ref="shopServiceImpl"/>
+		<property name="serviceInterface" value="com.michalprzysucha.shop.service.ShopService"/>
+	</bean-->	
+
+	<!--bean name="/ShopService" class="org.springframework.remoting.httpinvoker.HttpInvokerServiceExporter">
+		<property name="service" ref="shopServiceImpl"/>
+		<property name="serviceInterface" value="com.michalprzysucha.shop.service.ShopService"/>
+	</bean-->
+	
+	<!--bean name="/ShopService" class="org.springframework.remoting.caucho.HessianServiceExporter">
+		<property name="service" ref="shopServiceImpl"/>
+		<property name="serviceInterface" value="com.michalprzysucha.shop.service.ShopService"/>
+	</bean-->
+	
+	<bean name="/ShopService" class="org.springframework.remoting.caucho.BurlapServiceExporter">
+		<property name="service" ref="shopServiceImpl"/>
+		<property name="serviceInterface" value="com.michalprzysucha.shop.service.ShopService"/>
+	</bean>
+
+</beans>
